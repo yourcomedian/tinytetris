@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- HTML5文档类型声明 -->
+<html lang="zh-CN">
+<!-- 设置网页语言为中文 -->
+<head>
+    <!-- head部分包含网页的元数据和资源引用 -->
+    <meta charset="UTF-8">
+    <!-- 设置字符编码为UTF-8，支持各种语言字符 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 视口设置，使网页在移动设备上正确显示和缩放 -->
+    <title>网页版俄罗斯方块</title>
+    <!-- 网页标题，显示在浏览器标签页上 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- 引用CSS样式文件，使用Flask的url_for函数动态生成文件路径 -->
+</head>
+<body>
+    <!-- body部分包含网页的可见内容 -->
+    <div class="container">
+        <!-- 主容器，包含所有游戏内容 -->
+        <h1>俄罗斯方块</h1>
+        <!-- 游戏标题 -->
+        <div class="game-area">
+            <!-- 游戏区域，包含游戏画布和游戏信息 -->
+            <canvas id="tetris-board"></canvas> 
+            <!-- 使用Canvas元素绘制游戏棋盘，JavaScript会在这里渲染游戏 -->
+            <div class="game-info">
+                <!-- 游戏信息区，包含分数、按钮和控制说明 -->
+                <h2>分数: <span id="score">0</span></h2>
+                <!-- 分数显示，初始值为0，会通过JavaScript动态更新 -->
+                <button id="start-button">开始游戏</button>
+                <!-- 开始游戏按钮，点击时会调用JavaScript中的startGame函数 -->
+                <div id="game-over-message" style="display:none; color: red; margin-top: 10px;">
+                    <!-- 游戏结束消息，初始隐藏，游戏结束时显示 -->
+                    游戏结束！
+                </div>
+                <div class="controls-info">
+                    <!-- 游戏控制说明区域 -->
+                    <h3>操作说明:</h3>
+                    <!-- 操作说明标题 -->
+                    <p>左箭头: 左移</p>
+                    <p>右箭头: 右移</p>
+                    <p>上箭头: 旋转</p>
+                    <p>下箭头: 加速下落</p>
+                    <p>空格键:  直接下落</p>
+                    <p>Q: （原版退出）在此版本中可以重新开始</p>
+                    <!-- 游戏操作键位说明 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <!-- 引用JavaScript文件，负责游戏逻辑和交互 -->
+</body>
+</html> 

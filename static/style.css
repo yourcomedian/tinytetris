@@ -1,0 +1,92 @@
+/* static/style.css */
+/* 俄罗斯方块游戏的样式表 */
+/* 定义游戏界面的外观、布局和响应式设计 */
+
+/* 全局样式：应用于整个页面的基础样式 */
+body {
+    font-family: Arial, sans-serif; /* 设置字体 */
+    display: flex; /* 使用弹性盒子布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    min-height: 100vh; /* 最小高度为视口高度 */
+    margin: 0; /* 移除默认边距 */
+    background-color: #f0f0f0; /* 浅灰色背景 */
+}
+
+/* 游戏容器：包含标题、游戏区域和信息区域 */
+.container {
+    background-color: #fff; /* 白色背景 */
+    padding: 20px; /* 内边距 */
+    border-radius: 8px; /* 圆角边框 */
+    box-shadow: 0 0 15px rgba(0,0,0,0.2); /* 阴影效果，增加立体感 */
+    text-align: center; /* 文本居中 */
+}
+
+/* 游戏区域：包含Canvas和游戏信息 */
+.game-area {
+    display: flex; /* 弹性盒子布局 */
+    justify-content: center; /* 水平居中对齐 */
+    align-items: flex-start; /* 顶部对齐 */
+    gap: 20px; /* Canvas与信息区间距 */
+    margin-top: 20px; /* 顶部外边距 */
+}
+
+/* 游戏棋盘Canvas */
+#tetris-board {
+    border: 2px solid #333; /* 深色边框 */
+    /* Canvas的尺寸由JavaScript根据棋盘大小动态设置 */
+}
+
+/* 游戏信息区：分数、按钮和操作说明 */
+.game-info {
+    text-align: left; /* 左对齐文本 */
+    min-width: 180px; /* 最小宽度，确保有足够空间 */
+}
+
+/* 游戏信息区的标题 */
+.game-info h2, .game-info h3 {
+    margin-top: 0; /* 移除顶部边距 */
+    margin-bottom: 10px; /* 底部边距 */
+}
+
+/* 开始游戏按钮样式 */
+#start-button {
+    padding: 10px 15px; /* 内边距，增加可点击区域 */
+    font-size: 16px; /* 字体大小 */
+    cursor: pointer; /* 鼠标悬停时显示手型光标 */
+    background-color: #4CAF50; /* 绿色背景 */
+    color: white; /* 白色文字 */
+    border: none; /* 移除边框 */
+    border-radius: 4px; /* 圆角边框 */
+    margin-bottom: 15px; /* 底部边距 */
+}
+
+/* 开始按钮悬停效果 */
+#start-button:hover {
+    background-color: #45a049; /* 悬停时深绿色 */
+}
+
+/* 操作说明文本 */
+.controls-info p {
+    margin: 5px 0; /* 上下间距 */
+    font-size: 0.9em; /* 略小的字体 */
+    color: #555; /* 深灰色文字 */
+}
+
+/* 方块颜色定义（供参考，实际在JavaScript中使用） */
+/* 这些类没有在HTML中使用，JavaScript直接使用pieceColors数组设置颜色 */
+.block-color-1 { background-color: cyan; }    /* I型方块颜色 */
+.block-color-2 { background-color: blue; }    /* J型方块颜色 */
+.block-color-3 { background-color: orange; }  /* L型方块颜色 */
+.block-color-4 { background-color: yellow; }  /* O型方块颜色 */
+.block-color-5 { background-color: lime; }    /* S型方块颜色 */
+.block-color-6 { background-color: purple; }  /* T型方块颜色 */
+.block-color-7 { background-color: red; }     /* Z型方块颜色 */
+
+/* 预留的棋盘格子样式，当使用div而非Canvas时可用 */
+.board-cell {
+    width: 20px;  /* 格子宽度 */
+    height: 20px; /* 格子高度 */
+    border: 1px solid #ddd; /* 浅灰色边框 */
+    display: inline-block; /* 行内块元素 */
+} 
