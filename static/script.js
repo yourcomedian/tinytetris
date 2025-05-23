@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             // 调用后端开始新游戏的API
             const response = await fetch('/api/start', { method: 'POST' });
-            if (!response.ok) {
+            if (!response.ok) {   // 检查请求是否成功（response.ok）
                 console.error('Failed to start game:', response.statusText);
                 return;
             }
@@ -269,4 +269,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 初始绘制一个空的棋盘
     drawBoard(); 
-}); 
+});
+
+/**
+ * 页面加载时执行：主函数、初始化dom元素参数、设置canvas尺寸、初始化状态变量、绘制空棋盘
+ * 
+ * 用户操作阶段： 
+ * 
+ * 点击开始按钮:
+ * 触发startgame函数；
+ * 清除所有计时器；
+ * 向后端发送/api/start请求，获取初始棋盘和分数；
+ * 更新游戏状态；
+ * 如果游戏未结束，启动主循环（每500ms自动下落一次，调用sendAction('tick')）。
+ * 按键操作：
+ * 监听keydown事件
+ * 判断按键类型，决定动作（左/右/旋转/硬降/软降/重启）。
+ * 软降（S键）会启动一个更快的下落计时器（每60ms），并立即下落一次。
+ * 其他动作（如A/D/W/空格）直接调用sendAction()发送到后端。
+ * Q键可以随时重启游戏（调用startGame()）
+ * 监听keyup事件：松开S键时，停止软降计时器。
+ * 
+ * 游戏主循环：
+ * 如果游戏在进行中，主循环每500ms自动调用sendAction('tick')，让方块自动下落。
+ * 
+ * 交互：
+ * 每次有动作（包括自动下落、用户操作），都通过sendAction()向后端发送请求。
+ * 后端返回最新的棋盘、分数、游戏是否结束等信息。
+ * 前端用updateGameState()更新状态和界面。
+ * 
+ * 如果后端返回gameOver为true，前端会：
+ * 停止所有计时器。
+ * 显示“游戏结束”提示。
+ * 按钮变为“重新开始”。
+ */
